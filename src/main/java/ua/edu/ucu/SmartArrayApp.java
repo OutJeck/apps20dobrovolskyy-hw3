@@ -4,9 +4,17 @@ import java.util.Arrays;
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
 import ua.edu.ucu.functions.MyPredicate;
-import ua.edu.ucu.smartarr.*;
+
+import ua.edu.ucu.smartarr.BaseArray;
+import ua.edu.ucu.smartarr.DistinctDecorator;
+import ua.edu.ucu.smartarr.FilterDecorator;
+import ua.edu.ucu.smartarr.MapDecorator;
+import ua.edu.ucu.smartarr.SmartArray;
+import ua.edu.ucu.smartarr.SortDecorator;
 
 public class SmartArrayApp {
+    private static final int GPA_THRESHOLD = 4;
+    private static final int SECOND_YEAR = 2;
 
     public static Integer[]
             filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
@@ -50,26 +58,33 @@ public class SmartArrayApp {
     }
 
     public static String[]
-            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(
+                    Student[] students) {
 
         MyPredicate predicate = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return ((Student) t).getYear() == 2 && ((Student) t).getGPA() >= 4;
+                return ((Student) t).getYear() == SECOND_YEAR
+                        &&
+                        ((Student) t).getGpa() >= GPA_THRESHOLD;
             }
         };
 
         MyComparator comparator = new MyComparator() {
             @Override
-            public int compare(Object stud1, Object stud2) {
-                return ((Student) stud1).getSurname().compareTo(((Student) stud2).getSurname());
+            public int compare(Object studOne, Object studTwo) {
+                String surnameOne = ((Student) studOne).getSurname();
+                String surnameTwo = ((Student) studTwo).getSurname();
+                return surnameOne.compareTo(surnameTwo);
             }
         };
 
         MyFunction function = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                return ((Student) t).getSurname() + " " + ((Student) t).getName();
+                String surname = ((Student) t).getSurname();
+                String name = ((Student) t).getName();
+                return surname + " " + name;
             }
         };
 
