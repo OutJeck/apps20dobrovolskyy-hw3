@@ -28,8 +28,8 @@ public class SmartArrayApp {
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object objOne, Object objTwo) {
+                return ((Integer) objOne) - ((Integer) objTwo);
             }
         };
 
