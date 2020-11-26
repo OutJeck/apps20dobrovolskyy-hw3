@@ -1,6 +1,5 @@
 package ua.edu.ucu.smartarr;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
 
 // Base array for decorators
 public class BaseArray implements SmartArray {

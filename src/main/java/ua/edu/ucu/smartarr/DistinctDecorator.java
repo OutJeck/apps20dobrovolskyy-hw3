@@ -1,10 +1,8 @@
 package ua.edu.ucu.smartarr;
 
-import org.omg.CORBA.OBJ_ADAPTER;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Objects;
+
 
 // Remove duplicates from SmartArray. Use method equals() to compare objects
 public class DistinctDecorator extends SmartArrayDecorator {
